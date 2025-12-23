@@ -15,7 +15,7 @@ else:
     genai.configure(api_key=GOOGLE_API_KEY)
     print("API Key configured successfully.")
 
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/', methods=['GET'])
 def home():
