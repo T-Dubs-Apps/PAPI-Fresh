@@ -10,9 +10,10 @@ CORS(app)
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 
 if not GOOGLE_API_KEY:
-    print("WARNING: GOOGLE_API_KEY not found.")
+    print("WARNING: GOOGLE_API_KEY not found in environment.")
 else:
     genai.configure(api_key=GOOGLE_API_KEY)
+    print("API Key configured successfully.")
 
 model = genai.GenerativeModel('gemini-pro')
 
@@ -40,6 +41,7 @@ def chat():
         })
 
     except Exception as e:
+        print(f"Error generating content: {e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
